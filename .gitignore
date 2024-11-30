@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/ListMate.API/FileContentIndex
+/.circleci
+/obj/Release/net6.0
