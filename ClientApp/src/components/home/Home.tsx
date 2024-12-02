@@ -1,29 +1,53 @@
 import { Auth0ContextInterface, User, useAuth0, withAuth0 } from "@auth0/auth0-react";
-import React, { Component } from "react";
-import WeatherForecast from "../WeatherForecast/WeatherForecast";
+import React, { Component, useEffect, useState } from "react";
+import { LoggedInUser } from "../../models/User/LoggedInUser";
+import { GetCurrentUser } from "../../services/UserService";
+import CreateUserForm from "../user/CreateUserForm";
+import UserInfoComponent from "../user/UserInfoComponent";
 
-type AuthProps = {
-  auth0: Auth0ContextInterface<User>;
-};
+const Home = () =>  {
+  const  { getAccessTokenSilently, loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const [currentUser, setCurrentUser] = useState<LoggedInUser>();
+  const [accessToken, setAccessToken] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
-class Home extends Component<AuthProps> {
-  static displayName = Home.name;
-  user?:User;
+  useEffect(() => {
+    (async () => {
+      await getAccessTokenSilently().then(async (token) => {
+        setAccessToken(token);
+        await GetCurrentUser(token, user?.email).then(async (currentUser: LoggedInUser) => {
+          setCurrentUser(currentUser);
+        }).finally(() => setIsLoading(false));
+      });
+    })();
+  }, []);
 
-  constructor(props: AuthProps | Readonly<AuthProps>) {
-    super(props);
 
-    this.user = this.props.auth0.user;
-    
-  }
 
-  render() {
-    return (
+  if(!isLoading && isAuthenticated && currentUser != undefined)
+    {
+      return (
+        <>
+        <UserInfoComponent/>
+        </>
+      );
+    }
+    else if(!isLoading && isAuthenticated && currentUser == undefined)
+    {
+      return (
+        <>
+        <CreateUserForm/>
+        </>
+      );
+    }
+    else{
+    return ( 
       <>
-      <WeatherForecast/>
+       <p>Loading...</p>
       </>
     );
-  }
+    }
+  
 }
 
-export default  withAuth0(Home);
+export default Home;

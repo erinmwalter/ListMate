@@ -1,0 +1,43 @@
+.card-header:hover {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: 1px solid rgba(0,0,0,.125);
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.high-priority {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.modal-body {
+    background-color: white;
+    color: #333;
+}
+
+.modal-body label {
+    color: #333;
+}
+
+.modal-body input {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ced4da;
+}
+
+.modal-body input:focus {
+    background-color: white;
+    color: #333;
+}
+
+/* Add some spacing between buttons in the modal */
+.modal-body button {
+    margin-top: 1rem;
+}

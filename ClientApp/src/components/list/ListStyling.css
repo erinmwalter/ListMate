@@ -1,0 +1,63 @@
+.card {
+    border: 1px solid rgba(0,0,0,.125);
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.form-switch {
+    padding-left: 2.5em;
+}
+
+.form-switch .form-check-input {
+    width: 2em;
+    margin-left: -2.5em;
+    background-position: left center;
+    border-radius: 2em;
+    transition: background-position .15s ease-in-out;
+}
+
+.form-switch .form-check-input:checked {
+    background-position: right center;
+}
+
+.toggle-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-switch {
+    position: relative;
+    appearance: none;
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 7px;
+}
+
+.toggle-switch:checked {
+    background-color: #0d6efd;
+}
+
+.toggle-switch:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+.toggle-switch:checked:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    margin: 0;
+    cursor: pointer;
+}

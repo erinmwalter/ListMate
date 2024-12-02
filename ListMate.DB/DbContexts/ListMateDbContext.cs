@@ -14,6 +14,22 @@ namespace ListMate.API.ListMate.DB.DbContexts
 
         public ListMateDbContext(DbContextOptions<ListMateDbContext> options) : base(options) { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ListItem>()
+                .HasOne<ListDescription>()
+                .WithMany(l => l.ListItems)
+                .HasForeignKey(li => li.ListId);
 
+            modelBuilder.Entity<UserInfoGroupInfo>()
+                .HasOne(ug => ug.User)
+                .WithMany(u => u.UserGroups)
+                .HasForeignKey(ug => ug.UserId);
+
+            modelBuilder.Entity<UserInfoGroupInfo>()
+                .HasOne(ug => ug.Group)
+                .WithMany(g => g.UserGroups)
+                .HasForeignKey(ug => ug.GroupId);
+        }
     }
 }

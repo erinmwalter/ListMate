@@ -21,3 +21,49 @@ body {
     padding: 10px;
     border-top: solid 1px white;
   }
+
+  /* Navbar Container */
+.custom-navbar {
+  background-color: #f0f8ff; /* Light blue background for a welcoming feel */
+  border-bottom: 2px solid #007bff; /* Subtle border */
+  padding: 0.75rem 1rem;
+}
+
+/* Brand Styling */
+.navbar-brand-custom {
+  font-size: 1.5rem;
+  color: #007bff !important; /* Primary color for the brand */
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand-custom:hover {
+  color: #0056b3 !important; /* Darker blue on hover */
+  text-decoration: none;
+}
+
+/* Navbar Links */
+.nav-link-custom {
+  color: #333 !important; /* Dark text for links */
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link-custom:hover {
+  background-color: #e9f5ff; /* Light hover background */
+  color: #007bff !important; /* Highlighted text */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Navbar on Small Screens */
+@media (max-width: 768px) {
+  .custom-navbar {
+      padding: 1rem;
+  }
+
+  .nav-link-custom {
+      font-size: 1rem;
+      padding: 0.5rem 0.75rem;
+  }
+}

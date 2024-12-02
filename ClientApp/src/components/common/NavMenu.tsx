@@ -9,6 +9,8 @@ import {
   NavLink,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./index.css";
+import logo from "./ListMateLogo.png";
 
 const env = process.env.REACT_APP_ENVIRONMENT;
 
@@ -39,13 +41,19 @@ class NavMenu extends Component {
     return (
       <header>
         <Navbar
-          className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3"
-          color="black"
+          className="navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 custom-navbar"
           container
           dark
         >
-          <NavbarBrand tag={Link} to="/">
-            ListMate
+          <NavbarBrand tag={Link} to="/" className="navbar-brand-custom">
+          <img 
+                alt="ListMate"
+                src={logo}
+                style={{
+                    height: 40,
+                    width: 40
+                }}
+            />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse
@@ -55,7 +63,7 @@ class NavMenu extends Component {
           >
             <ul className="navbar-nav align-items-center flex-grow">
               <NavItem>
-                <NavLink tag={Link} className="text-light" to="/">
+                <NavLink tag={Link} to="/" className="nav-link-custom">
                   Home
                 </NavLink>
               </NavItem>

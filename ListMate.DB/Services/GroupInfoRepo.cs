@@ -1,6 +1,9 @@
-﻿using ListMate.API.ListMate.DB.DbContexts;
+﻿using ListMate.API.Controllers;
+using ListMate.API.ListMate.DB.DbContexts;
 using ListMate.API.ListMate.DB.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
+using System.Text.RegularExpressions;
 
 namespace ListMate.API.ListMate.DB.Services
 {
@@ -12,27 +15,44 @@ namespace ListMate.API.ListMate.DB.Services
         {
             _context = context;
         }
-        public Task<GroupInfo> AddUsersToGroupAsync(List<int> userIds)
+        public async Task<bool> AddUsersToGroupAsync(List<int> userIds, int groupId)
         {
-            throw new NotImplementedException();
+            foreach(var id in userIds)
+            {
+                var uIGI = new UserInfoGroupInfo() { UserId = id, GroupId = groupId};
+                await _context.UserInfoGroupInfo.AddAsync(uIGI);
+            }
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<GroupInfo> CreateGroupAsync(GroupInfo groupInfo)
+        public async Task<bool> AddGroupAsync(GroupInfoCreatedBy groupInfo)
         {
-            throw new NotImplementedException();
+            var group = new GroupInfo() { GroupId = groupInfo.groupId, Description = groupInfo.description, GroupName = groupInfo.groupName };
+            group.UserGroups = new List<UserInfoGroupInfo>() { new UserInfoGroupInfo() { UserId = groupInfo.createdBy } };
+            await _context.GroupInfo.AddAsync(group);
+            return await _context.SaveChangesAsync() > 0;
+ 
+        }
+
+        public async Task<GroupInfo?> GetGroupInfoAsync(int groupId)
+        {
+            var group = await _context.GroupInfo.Where(x => x.GroupId == groupId).FirstOrDefaultAsync();
+            return group;
         }
 
         public async Task<List<GroupInfo>> GetGroupsForUserAsync(int userId)
         {
-            List<int> groupIds = await _context.UserInfoGroupInfo.Where(x => x.UserId == userId).Select(x => x.GroupId).ToListAsync();
-            List<GroupInfo> groups = await _context.GroupInfo.Where(x => groupIds.Contains(x.GroupId)).ToListAsync();
-
-            return groups;
+            return await _context.UserInfoGroupInfo
+                .Where(ug => ug.UserId == userId)
+                .Include(ug => ug.Group)
+                .Select(ug => ug.Group)
+                .ToListAsync();
         }
 
         public Task<GroupInfo> RemoveGroupAsync(int groupId)
         {
             throw new NotImplementedException();
         }
+
     }
 }

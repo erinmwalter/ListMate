@@ -11,6 +11,12 @@ namespace ListMate.API.ListMate.DB.Services
         {
             services.AddDbContext<ListMateDbContext>(options =>
             options.UseNpgsql(config.ConnectionString));
+
+            services
+                .AddTransient<IGroupInfoRepo, GroupInfoRepo>()
+                .AddTransient<IUserInfoRepo, UserInfoRepo>()
+                .AddTransient<IListInfoRepo, ListInfoRepo>()
+                ;
         }
     }
 }

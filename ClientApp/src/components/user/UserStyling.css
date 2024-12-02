@@ -1,0 +1,101 @@
+/* Hover Effects */
+.hover-card {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.hover-card:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* General Card Styling */
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+}
+
+.user-groups-card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Group Item Cards */
+.group-item-card {
+    border-left: 4px solid lightblue; /* Bootstrap primary color */
+    transition: all 0.2s ease-in-out;
+}
+
+.group-item-card:hover {
+    background-color: #f8f9fa;
+    border-left: 4px solid lightblue; /* Darker primary color on hover */
+    transform: translateY(-2px);
+}
+
+/* Card Headers */
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+}
+
+.card-header.bg-primary {
+    background-color: lightskyblue !important;
+}
+
+.card-header.bg-success {
+    background-color: lightseagreen !important;
+}
+
+/* Welcome Section */
+.welcome-card {
+    background-color: #f0f8ff; /* Light blue for a welcoming feel */
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message {
+    font-size: 2rem;
+    color: black; /* Bootstrap primary color */
+    font-weight: 600;
+}
+
+.welcome-subtext {
+    font-size: 1rem;
+    color: #6c757d; /* Subtle muted text */
+    margin-top: 0.5rem;
+}
+
+/* Empty Groups Card */
+.no-groups-card {
+    background-color: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Text Styling */
+.text-muted {
+    color: #6c757d !important;
+}
+
+h3 {
+    color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-header {
+        font-size: 1rem;
+    }
+
+    .welcome-message {
+        font-size: 1.5rem;
+    }
+
+    .welcome-subtext {
+        font-size: 0.9rem;
+    }
+}

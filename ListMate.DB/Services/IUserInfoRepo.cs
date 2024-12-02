@@ -7,5 +7,6 @@ namespace ListMate.API.ListMate.DB.Services
         Task<UserInfo?> GetUserInfoByEmail(string emailAddress);
         Task<bool> UpdateUserInfo(UserInfo userInfo);
         Task<UserInfo?> AddUserInfo(UserInfo userToAdd);
+        Task<List<UserInfo>?> GetAllUsersForGroup(int groupId);
     }
 }

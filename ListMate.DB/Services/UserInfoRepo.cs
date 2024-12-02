@@ -16,7 +16,7 @@ namespace ListMate.API.ListMate.DB.Services
 
         public async Task<UserInfo?> GetUserInfoByEmail(string emailAddress)
         {
-            return await _context.UserInfo.SingleOrDefaultAsync(x => x.EmailAddress == emailAddress);
+            return await _context.UserInfo.Where(x => x.EmailAddress == emailAddress).FirstOrDefaultAsync();
                 
         }
 
@@ -43,6 +43,15 @@ namespace ListMate.API.ListMate.DB.Services
             var userInfo = await GetUserInfoByEmail(userToAdd.EmailAddress);
 
             return userInfo;
+        }
+
+        public async Task<List<UserInfo>?> GetAllUsersForGroup(int groupId)
+        {
+            return await _context.UserInfoGroupInfo
+                    .Where(ug => ug.GroupId == groupId)
+                    .Include(ug => ug.User)
+                    .Select(ug => ug.User)
+                    .ToListAsync();
         }
     }
 }
