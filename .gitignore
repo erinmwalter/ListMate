@@ -6,3 +6,4 @@
 /.circleci
 /obj/Release/net6.0
 /bin/Debug/net6.0
+/obj/Debug/net6.0
