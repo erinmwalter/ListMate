@@ -38,11 +38,11 @@ namespace ListMate.API
             app.UseStaticFiles();
             app.UseDefaultFiles();
             app.UseAuthorization();
-
+            app.MapFallbackToFile("index.html");
             app.MapControllers();
 
             app.Run();
-            app.MapFallbackToFile("index.html");
+            
         }
 
         private static string EnvironmentName =>
