@@ -35,7 +35,8 @@ namespace ListMate.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
+            app.UseDefaultFiles();
             app.UseAuthorization();
 
             app.MapControllers();
