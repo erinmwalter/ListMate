@@ -42,6 +42,7 @@ namespace ListMate.API
             app.MapControllers();
 
             app.Run();
+            app.MapFallbackToFile("index.html");
         }
 
         private static string EnvironmentName =>
