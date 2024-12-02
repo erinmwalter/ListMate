@@ -7,3 +7,69 @@
 /obj/Release/net6.0
 /bin/Debug/net6.0
 /obj/Debug/net6.0
+
+# Node modules
+/node_modules
+
+# Build output
+/build
+/dist
+
+# Local env files
+.env.local
+.env.development.local
+.env.test.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+.idea/
+.vscode/
+# User-specific file for Rider IDE
+.idea/
+
+# Build results
+/bin/
+/obj/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files for Visual Studio
+.vs2019/
+
+# Rider and Visual Studio Code files
+.vscode/
+
+# ASP.NET
+wwwroot/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Npm and yarn
+node_modules/
+yarn.lock
+
+# ASP.NET build folders
+.vs/
